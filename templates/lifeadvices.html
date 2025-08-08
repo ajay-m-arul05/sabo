@@ -9,9 +9,14 @@
 <body>
     <h1>Life Advices 🌱</h1>
     <a href="/" class="back-btn">⬅ Back</a>
-    <p>Click below for some *life-changing wisdom*...</p>
+    <p>Click below for some <i>life-changing wisdom</i>...</p>
+    
     <button onclick="getAdvice()">Get Advice</button>
-    <p id="advice"></p>
+
+    <!-- Advice display box -->
+    <div class="chat-container" style="margin-top:20px; text-align:center;">
+        <p id="advice">Your advice will appear here...</p>
+    </div>
 
     <script>
         async function getAdvice() {

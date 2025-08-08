@@ -10,20 +10,22 @@ body {
     color: #fff;
 }
 
+/* Titles */
 h1 {
     color: #ff6ec7;
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
-    font-size: 2.2em;
+    font-size: 2.5em;
 }
 
 p {
     color: #ddd;
-    font-size: 1.1em;
+    font-size: 1.2em;
     opacity: 0.9;
 }
 
+/* Home button layout */
 .button-container {
     display: flex;
     justify-content: center;
@@ -32,55 +34,60 @@ p {
     flex-wrap: wrap;
 }
 
+/* Buttons */
 .tool-btn, .back-btn, button {
-    padding: 50px 75px;
+    padding: 20px 40px;
     background-color: #6c63ff;
     color: white;
     text-decoration: none;
     border-radius: 8px;
     border: none;
-    font-size: 25px;
+    font-size: 1.2em;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
     box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
 
 .tool-btn:hover, .back-btn:hover, button:hover {
     background-color: #5848d9;
-    padding: 60px 80px;
-    font-size: 30px;
-    transform: translateY(-2px);
+    transform: scale(1.1);
 }
 
+/* Chat container */
 .chat-container {
-    max-width: 500px;
-    margin: 30px auto;
+    max-width: 700px;
+    margin: 40px auto;
     background: rgba(255, 255, 255, 0.05);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 20px rgba(0,0,0,0.4);
 }
 
+/* Chat messages area */
 #chat-box {
-    height: 300px;
+    height: 400px;
     overflow-y: auto;
-    border: none;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 15px;
+    font-size: 1.2em;
+    line-height: 1.6;
     background: rgba(255, 255, 255, 0.07);
     border-radius: 8px;
     color: #fff;
 }
 
+/* Inputs */
 input[type="text"], input[type="file"] {
-    padding: 8px;
-    margin: 5px;
-    border-radius: 6px;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
     border: 1px solid #444;
     background: #2a2a3b;
     color: white;
+    font-size: 1.1em;
+    width: 100%;
 }
 
+/* Images */
 img {
     border-radius: 8px;
     box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
@@ -91,6 +98,7 @@ img {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
 body, h1, p, .tool-btn, .back-btn, button, .chat-container, #chat-box {
     animation: fadeIn 0.9s ease-out;
 }
