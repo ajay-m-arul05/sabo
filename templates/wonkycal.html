@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WonkyCal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>📅 WonkyCal</h1>
+    <p>Enter current date and time (24-hour format) to see the next date and countdown.</p>
+
+    <form method="POST">
+        <label>Date:</label>
+        <input type="date" name="date" required>
+        <label>Time (24hr):</label>
+        <input type="time" name="time" required>
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if next_day %}
+        <h3>Current Date & Time: {{ current_dt }}</h3>
+        <h3>Next Date & Time: {{ next_day }}</h3>
+        <h3>Seconds Remaining: <span id="countdown">{{ seconds_remaining }}</span></h3>
+
+        <script>
+            let seconds = { seconds_remaining };
+            setInterval(() => {
+                if (seconds > 0) {
+                    seconds--;
+                    document.getElementById("countdown").innerText = seconds;
+                }
+            }, 1000);
+        </script>
+    {% endif %}
+</body>
+</html>
