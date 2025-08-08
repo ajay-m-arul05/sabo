@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Guesser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Age Guesser 🎯</h1>
+    <a href="/" class="back-btn">⬅ Back</a>
+    <p>Upload a picture, and I'll guess your age (totally scientifically 🤔).</p>
+    
+    <form id="age-form" enctype="multipart/form-data">
+        <input type="file" name="photo" accept="image/*" required>
+        <button type="submit">Guess My Age</button>
+    </form>
+    
+    <p id="result"></p>
+    <img id="preview" style="max-width:200px; margin-top:10px; display:none;">
+
+    <script>
+        document.getElementById("age-form").addEventListener("submit", async function(e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+
+            let res = await fetch("/api/guess-age", {
+                method: "POST",
+                body: formData
+            });
+
+            let data = await res.json();
+            if (data.error) {
+                document.getElementById("result").innerText = data.error;
+                return;
+            }
+
+            document.getElementById("result").innerText = `I think you're ${data.age} years old!`;
+            let img = document.getElementById("preview");
+            img.src = data.photo_url;
+            img.style.display = "block";
+        });
+    </script>
+</body>
+</html>

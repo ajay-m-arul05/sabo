@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sabogpt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Sabogpt 🤖</h1>
+    <a href="/" class="back-btn">⬅ Back</a>
+    <div class="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Say something silly...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script>
+        async function sendMessage() {
+            let input = document.getElementById("user-input");
+            let message = input.value.trim();
+            if (!message) return;
+
+            document.getElementById("chat-box").innerHTML += `<p><b>You:</b> ${message}</p>`;
+            input.value = "";
+
+            let res = await fetch("/api/sabogpt", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message })
+            });
+            let data = await res.json();
+            document.getElementById("chat-box").innerHTML += `<p><b>Sabogpt:</b> ${data.reply}</p>`;
+        }
+    </script>
+</body>
+</html>

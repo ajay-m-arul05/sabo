@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Life Advices</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Life Advices 🌱</h1>
+    <a href="/" class="back-btn">⬅ Back</a>
+    <p>Click below for some *life-changing wisdom*...</p>
+    <button onclick="getAdvice()">Get Advice</button>
+    <p id="advice"></p>
+
+    <script>
+        async function getAdvice() {
+            let res = await fetch("/api/life-advices");
+            let data = await res.json();
+            document.getElementById("advice").innerText = data.advice;
+        }
+    </script>
+</body>
+</html>
