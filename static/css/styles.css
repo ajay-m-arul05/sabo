@@ -5,17 +5,23 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f, #2b2b45);
+    color: #fff;
 }
 
 h1 {
-    color: #333;
+    color: #ff6ec7;
     margin-top: 20px;
+    margin-bottom: 20px;
     text-align: center;
+    font-size: 2.2em;
 }
 
 p {
-    color: #555;
+    color: #ddd;
     font-size: 1.1em;
+    opacity: 0.9;
 }
 
 .button-container {
@@ -28,42 +34,61 @@ p {
 
 .tool-btn, .back-btn, button {
     padding: 12px 25px;
-    background-color: #4CAF50;
+    background-color: #6c63ff;
     color: white;
     text-decoration: none;
     border-radius: 8px;
     border: none;
     font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
 
 .tool-btn:hover, .back-btn:hover, button:hover {
-    background-color: #45a049;
+    background-color: #5848d9;
+    transform: translateY(-2px);
 }
 
 .chat-container {
     max-width: 500px;
     margin: 30px auto;
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
     padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
 }
 
 #chat-box {
     height: 300px;
     overflow-y: auto;
-    border: 1px solid #ddd;
+    border: none;
     padding: 10px;
     margin-bottom: 10px;
-    background: #fafafa;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    color: #fff;
 }
 
 input[type="text"], input[type="file"] {
     padding: 8px;
     margin: 5px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #2a2a3b;
+    color: white;
 }
 
 img {
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.4);
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+body, h1, p, .tool-btn, .back-btn, button, .chat-container, #chat-box {
+    animation: fadeIn 0.9s ease-out;
 }

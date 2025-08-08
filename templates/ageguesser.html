@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Age Guesser</title>
+    <title>Seconds to Live ⏳</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>Age Guesser 🎯</h1>
+    <h1>⏳ Seconds to Live</h1>
     <a href="/" class="back-btn">⬅ Back</a>
-    <p>Upload a picture, and I'll guess your age (totally scientifically 🤔).</p>
+    <p>Upload a picture, and I’ll tell you exactly how many seconds you have left… and count them down 😈</p>
     
     <form id="age-form" enctype="multipart/form-data">
         <input type="file" name="photo" accept="image/*" required>
-        <button type="submit">Guess My Age</button>
+        <button type="submit">Reveal My Fate</button>
     </form>
     
-    <p id="result"></p>
+    <p id="result" style="font-size: 1.5em; font-weight: bold;"></p>
     <img id="preview" style="max-width:200px; margin-top:10px; display:none;">
 
     <script>
@@ -33,7 +33,22 @@
                 return;
             }
 
-            document.getElementById("result").innerText = `I think you're ${data.age} years old!`;
+            // Extract seconds from "you have" message (e.g. "5 seconds to live")
+            let seconds = parseInt(data["you have"].split(" ")[0], 10);
+
+            // Start countdown
+            let resultEl = document.getElementById("result");
+            let countdown = setInterval(() => {
+                if (seconds > 0) {
+                    resultEl.innerText = `${seconds} seconds to live`;
+                    seconds--;
+                } else {
+                    resultEl.innerText = "💀 Time's up!";
+                    clearInterval(countdown);
+                }
+            }, 1000);
+
+            // Show uploaded image
             let img = document.getElementById("preview");
             img.src = data.photo_url;
             img.style.display = "block";

@@ -2,8 +2,10 @@ import os
 import random
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
-import openai
 from datetime import datetime, timedelta
+from groq import Groq  # ✅ New import for Groq
+from livereload import Server
+
 
 
 # Load environment variables from .env
@@ -13,8 +15,20 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-# OpenAI API Key
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Groq API Key
+groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+
+#reload#
+if __name__ == '__main__':
+    from livereload import Server
+
+    server = Server(app.wsgi_app)
+    server.watch('templates/*.html')   # watch HTML changes
+    server.watch('static/css/*.css')   # watch CSS changes
+    server.watch('static/js/*.js')     # watch JS changes
+    server.serve(port=5000, host='127.0.0.1', debug=True)
+
 
 # -----------------
 # Routes for pages
@@ -48,29 +62,25 @@ def wonkycal():
         except ValueError:
             return render_template('wonkycal.html', error="Invalid date/time format!")
 
-        # Calculate next day
-        next_day = current_dt + timedelta(days=1)
-        seconds_remaining = int((next_day - current_dt).total_seconds())
+        
+        # Calculate next midnight
+        next_midnight = datetime(current_dt.year, current_dt.month, current_dt.day) + timedelta(days=1)
+        seconds_remaining = int((next_midnight - current_dt).total_seconds())
+
+
 
         return render_template(
             'wonkycal.html',
             current_dt=current_dt.strftime("%Y-%m-%d %H:%M"),
-            next_day=next_day.strftime("%Y-%m-%d %H:%M"),
+            next_midnight=next_midnight.strftime("%Y-%m-%d %H:%M"),
             seconds_remaining=seconds_remaining
         )
     return render_template('wonkycal.html')
     
 
 # -----------------
-# API: Sabogpt chatbot
+# API: Sabogpt chatbot (Groq version)
 # -----------------
-from openai import OpenAI
-from flask import Flask, request, jsonify
-
-
-client = OpenAI()
-
-# Sabogpt
 @app.route('/api/sabogpt', methods=['POST'])
 def sabogpt_api():
     user_message = request.json.get("message", "")
@@ -78,38 +88,46 @@ def sabogpt_api():
         return jsonify({"reply": "Say something first!"})
 
     try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+        response = groq_client.chat.completions.create(
+            model="llama3-70b-8192",  # ✅ Groq free model
             messages=[
                 {
                     "role": "system",
-                    "content": "You are Sabogpt, we are in a hackathon and we need to sabotage each other's projects so give sarcastic roasts and ways to mess up others' projects, keep answers under 100 words."
-                },
+                    "content": (
+                        "roast the heck out of the user's project idea, first.,then "
+                       "give a short three line, funny, and absurd reply to the user's project idea, "
+                       "and then give a short three line, funny, and absurd reply to the user's project idea, "
+                       "make it short"
+                       "no need to specify the roasting part, just roast the heck out of the user's project idea, first.,then "
+                    )
+                },    
                 {"role": "user", "content": user_message}
-            ]
+            ],
+            temperature=0.9
         )
         return jsonify({"reply": response.choices[0].message.content})
     except Exception as e:
         return jsonify({"reply": f"Error: {str(e)}"})
 
-
-# Life Advices
+# -----------------
+# API: Life Advices (Groq version)
+# -----------------
 @app.route('/api/life-advices', methods=['GET'])
 def life_advices_api():
     try:
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+        response = groq_client.chat.completions.create(
+            model="llama3-70b-8192",
             messages=[
                 {
                     "role": "system",
-                    "content": "Give one short, funny, or absurd life advice."
+                    "content": "Give one short, funny, and absurd advice based on science."
                 }
-            ]
+            ],
+            temperature=0.8
         )
         return jsonify({"advice": response.choices[0].message.content})
     except Exception as e:
         return jsonify({"advice": f"Error: {str(e)}"})
-
 
 # -----------------
 # API: Age Guesser (random age)
@@ -128,9 +146,13 @@ def guess_age():
     file.save(filepath)
     
     # Random age
-    guessed_age = random.randint(1, 100)
-    
-    return jsonify({"age": guessed_age, "photo_url": f"/{filepath}"})
+    guessed_age = random.randint(100, 99999)
+
+    return jsonify({
+    "you have": f"{guessed_age} seconds to live",
+    "photo_url": f"/{filepath}"
+})
+
 
 # -----------------
 # API: WonkyCal (next date + seconds left)
@@ -138,13 +160,17 @@ def guess_age():
 @app.route('/api/wonkycal', methods=['GET'])
 def wonkycal_api():
     now = datetime.now()
-    next_day = now + timedelta(days=1)
-    seconds_left = int((next_day - now).total_seconds())
+    
+    # Calculate next midnight
+    next_midnight = datetime(current_dt.year, current_dt.month, current_dt.day) + timedelta(days=1)
+    seconds_remaining = int((next_midnight - current_dt).total_seconds())
+
+
 
     return jsonify({
         "current_datetime": now.strftime("%Y-%m-%d %H:%M:%S"),
-        "next_datetime": next_day.strftime("%Y-%m-%d %H:%M:%S"),
-        "seconds_left": seconds_left
+        "next_datetime": next_midnight.strftime("%Y-%m-%d %H:%M:%S"),
+        "seconds_left": seconds_remaining
     })
 
 # -----------------

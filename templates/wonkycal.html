@@ -3,7 +3,17 @@
 <head>
     <title>WonkyCal</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        #countdown {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #0077cc;
+        }
+    </style>
 </head>
+
+<script src="http://localhost:35729/livereload.js"></script>
+
 <body>
     <h1>📅 WonkyCal</h1>
     <p>Enter current date and time (24-hour format) to see the next date and countdown.</p>
@@ -20,20 +30,26 @@
         <p style="color:red;">{{ error }}</p>
     {% endif %}
 
-    {% if next_day %}
-        <h3>Current Date & Time: {{ current_dt }}</h3>
-        <h3>Next Date & Time: {{ next_day }}</h3>
-        <h3>Seconds Remaining: <span id="countdown">{{ seconds_remaining }}</span></h3>
+{% if next_midnight %}
+    <h3>Current Date & Time: {{ current_dt }}</h3>
+    <h3>Next Date & Time: {{ next_midnight }}</h3>
+    <h3>Seconds Remaining: <span id="countdown">{{ seconds_remaining }}</span></h3>
 
-        <script>
-            let seconds = { seconds_remaining };
-            setInterval(() => {
-                if (seconds > 0) {
-                    seconds--;
-                    document.getElementById("countdown").innerText = seconds;
-                }
-            }, 1000);
-        </script>
-    {% endif %}
+    <script>
+        const targetTime = new Date("{{ next_midnight }}").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const secondsLeft = Math.floor((targetTime - now) / 1000);
+            if (secondsLeft >= 0) {
+                document.getElementById("countdown").innerText = secondsLeft;
+            }
+        }
+
+        updateCountdown(); // Initial display
+        setInterval(updateCountdown, 1000);
+    </script>
+{% endif %}
+
 </body>
 </html>
