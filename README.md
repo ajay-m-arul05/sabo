@@ -1,34 +1,34 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# KAEOSTKIT 🎯
 
 
-## Basic Details
-### Team Name: [Name]
+## Basic Details: a chaotic toolkit for chaotic people
+### Team Name: HELLA
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+
+- Member 1: AJAY M ARUL - NSS College of Engineering, Palakkad
+- Member 2: AFRIN K V - NSS College of Engineering, Palakkad
 
 ### Project Description
-[2-3 lines about what your project does]
+playful unserious toolkit that offers quirky ai chats and random life advices and more
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+tools are way too boring
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+unconvential way of solving problems
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
+- [Languages used: python,html,css,javascript
 - [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- [Libraries used os,random,datetime,flask,groq
+- [Tools used vscode,github
 
 For Hardware:
 - [List main components]
@@ -38,7 +38,7 @@ For Hardware:
 ### Implementation
 For Software:
 # Installation
-[commands]
+[commands pip install flask, pip install groq
 
 # Run
 [commands]
