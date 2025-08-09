@@ -67,8 +67,8 @@ predicts your death based on your photo in seconds......literally
 ![WhatsApp Image 2025-08-09 at 06 48 51_59e64742](https://github.com/user-attachments/assets/add00dba-9dd9-4778-816f-fe2336be6228)
 a calendar that counts down how many seconds you have till tomorrow
 
-
-https://drive.google.com/file/d/1MgT0a6uTvO7lKs9iuAC5xKLUjFDS_Q65/view?usp=drive_link
+[
+https://youtu.be/smW83Jwby-k
 demonstration video
 
 
