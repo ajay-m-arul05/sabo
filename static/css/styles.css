@@ -39,6 +39,7 @@ p {
     padding: 20px 40px;
     background-color: #6c63ff;
     color: white;
+    margin-top: 10px;
     text-decoration: none;
     border-radius: 8px;
     border: none;
@@ -61,6 +62,9 @@ p {
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0px 6px 20px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Chat messages area */
