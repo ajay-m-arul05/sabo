@@ -1,34 +1,34 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# KAEOSTKIT 🎯
 
 
-## Basic Details
-### Team Name: [Name]
+## Basic Details: a chaotic toolkit for chaotic people
+### Team Name: HELLA
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+
+- Member 1: AJAY M ARUL - NSS College of Engineering, Palakkad
+- Member 2: AFRIN K V - NSS College of Engineering, Palakkad
 
 ### Project Description
-[2-3 lines about what your project does]
+playful unserious toolkit that offers quirky ai chats and random life advices and more
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+tools are way too boring
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+unconvential way of solving problems
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
+- [Languages used: python,html,css,javascript
 - [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- [Libraries used os,random,datetime,flask,groq
+- [Tools used vscode,github
 
 For Hardware:
 - [List main components]
@@ -38,7 +38,7 @@ For Hardware:
 ### Implementation
 For Software:
 # Installation
-[commands]
+[commands pip install flask, pip install groq
 
 # Run
 [commands]
@@ -47,50 +47,32 @@ For Software:
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![WhatsApp Image 2025-08-09 at 06 45 46_aad2861d](https://github.com/user-attachments/assets/3f5841c0-ab57-4280-a710-d07ff988bc98)
+)
+front page of toolkit
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![WhatsApp Image 2025-08-09 at 06 47 14_6a1ae8d0](https://github.com/user-attachments/assets/1c23fccb-d3be-45c4-a0b6-1c5f798c04c5)
+how we can sabotage other,s projects using sabogpt
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
 
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
 
-For Hardware:
 
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
+![WhatsApp Image 2025-08-09 at 06 48 12_7c4c6113](https://github.com/user-attachments/assets/2d6c3502-1d9d-4aaa-aa0e-aed98dc2c3d8)
 
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
+gives you random life advices,which may or may not make sense
 
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
+![WhatsApp Image 2025-08-09 at 06 47 46_64c3803f](https://github.com/user-attachments/assets/2d7b9662-4d94-470f-8133-02c8f638ef52)
+predicts your death based on your photo in seconds......literally
 
-![Build](Add photos of build process here)
-*Explain the build steps*
+![WhatsApp Image 2025-08-09 at 06 48 51_59e64742](https://github.com/user-attachments/assets/add00dba-9dd9-4778-816f-fe2336be6228)
+a calendar that counts down how many seconds you have till tomorrow
 
-![Final](Add photo of final product here)
-*Explain the final build*
 
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
+https://drive.google.com/file/d/1MgT0a6uTvO7lKs9iuAC5xKLUjFDS_Q65/view?usp=drive_link
+demonstration video
 
-# Additional Demos
-[Add any extra demo materials/links]
 
-## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
