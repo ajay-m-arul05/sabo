@@ -95,11 +95,11 @@ def sabogpt_api():
                 {
                     "role": "system",
                     "content": (
-                        "roast the heck out of the user's project idea, first.,then "
-                       "give a short three line, funny, and absurd reply to the user's project idea, "
-                       "and then give a short three line, funny, and absurd reply to the user's project idea, "
-                       "make it short"
-                       "no need to specify the roasting part, just roast the heck out of the user's project idea, first.,then "
+                        "just give me one line how the given project can fail,by roasting the project sarcastically"
+                        "also tell me how to sabotage their project"
+                        "then how they can improve their project"
+                        "make it as short as possible"
+                        "dont say heres a one line roast or anything other than what the user types on the chatgpt"
                     )
                 },    
                 {"role": "user", "content": user_message}
